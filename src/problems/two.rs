@@ -10,15 +10,41 @@ use wasm_bindgen::prelude::*;
 * do not exceed four million, find the sum of the even-valued terms.
 */
 
+struct Fib(u32, u32);
+
+impl Fib {
+    pub fn new() -> Self {
+        Self(1, 2)
+    }
+}
+
+impl Iterator for Fib {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let Self(x, y) = *self;
+
+        self.0 = y;
+        self.1 = x + y;
+
+        Some(self.1)
+    }
+}
+
 #[wasm_bindgen]
 pub fn solve_2(max: u32) -> u32 {
-    (0..max).fold(0, |acc, val| {
-        if val % 3 == 0 || val % 5 == 0 {
-            acc + val
-        } else {
-            acc
+    let mut fib = Fib::new();
+    let mut sum: u32 = 1 + fib.0;
+
+    while let Some(n) = fib.next() {
+        if n >= max {
+            break;
+        } else if n % 2 == 0 {
+            sum += n;
         }
-    })
+    }
+
+    sum
 }
 
 #[cfg(test)]
