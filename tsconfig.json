@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ], 
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true, 
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@wasm/*": ["./pkg/*"]
+    }
+  },
+  "exclude": [
+    "**/*.wasm"
+  ]
+}

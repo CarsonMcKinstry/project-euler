@@ -1,0 +1,27 @@
+{
+  "name": "project-euler-web",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Carson McKinstry <carson.mckinstry@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "scripts": {
+    "prebuild": "wasm-pack build",
+    "build": "webpack --config webpack.config.js",
+    "dev": "yarn watch:rs & yarn watch:js",
+    "watch:js": "webpack serve",
+    "watch:rs": "nodemon --exec yarn prebuild -e rs",
+    "test": "yarn test"
+  },
+  "dependencies": {}
+}
