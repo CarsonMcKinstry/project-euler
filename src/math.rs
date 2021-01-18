@@ -1,3 +1,7 @@
+pub(crate) mod grid;
+pub(crate) mod num;
+pub(crate) mod vec2d;
+
 pub(crate) fn prime_factors(n: i64) -> Vec<i64> {
     let mut s = n;
     let mut factors: Vec<i64> = Vec::new();
@@ -37,13 +41,6 @@ pub(crate) fn lcm(a: i64, b: i64) -> i64 {
     (a * b) / gcd(a, b)
 }
 
-/**
-*     while i ** 2 <= n:
-       if n % i == 0 or n % (i + 2) == 0:
-           return False
-       i += 6
-   return True
-*/
 pub(crate) fn is_prime(n: i64) -> bool {
     if n <= 3 {
         n > 1
